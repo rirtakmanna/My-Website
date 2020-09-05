@@ -4,6 +4,7 @@ import lottie from "lottie-web-light";
 import AOS from "aos";
 
 gsap.registerPlugin(TextPlugin);
+
 AOS.init({
   offset: 200,
   duration: 800,
@@ -27,6 +28,7 @@ window.addEventListener("load", () => {
   preloader.classList.add("preloder__finish");
 
   if (preloader.classList.contains("preloder__finish")) {
+    
     gsap.fromTo(
       ".transition",
       { width: "100%" },
@@ -52,6 +54,7 @@ window.addEventListener("load", () => {
       });
     });
 
+    
     const icon = document.getElementsByClassName("icon");
 
     Array.prototype.forEach.call(icon, (bm) => {
@@ -260,7 +263,7 @@ window.addEventListener("load", () => {
             console.log("whoops", e.srcElement.parentElement.href);
           }
         }, 1000);
-
+    
         gsap.fromTo(
           ".transition",
           { width: "0%" },
@@ -275,5 +278,6 @@ window.addEventListener("load", () => {
         );
       };
     });
+
   }
 });

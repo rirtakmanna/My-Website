@@ -1,90 +1,80 @@
+<?php $errors = '';
+$myemail = 'web@rirtakmanna.com';
+if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']))
+{
+    $errors .= "\n Error: all fields are required";
+}
+$name = $_POST['name'];
+$email_address = $_POST['email'];
+$message = $_POST['message'];
+if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i", $email_address))
+{
+    $errors .= "\n Error: Invalid email address";
+}
+if (empty($errors))
+{
+    $to = $myemail;
+    $email_subject = "Doubt form submission: $name";
+    $email_body = "A Doubt form submited in your website. " . " Here are the details:\n\n Name: $name \n\n Email: $email_address \n\n Message \n\n $message";
+    $headers = "From My Website Doubt Form";
+    mail($to, $email_subject, $email_body, $headers);
+    header('Location: thank-you.html');
+} ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
     <meta
+      content="Hey!!., I'm Rirtak Manna, a front end developer and my mission is to design the digital world in a new way, even in a better way. I love creating websites that resonate and connect with their target audience."
       name="description"
-      content="Hey!! I'm Rirtak manna. I help those who need a new website or redesign the existing one. I love creating websites that resonate and connect with their target audience."
     />
     <meta
-      name="keywords"
       content="Front end developer, website, web making, Rirtak, Manna, Rirtak Manna"
+      name="keywords"
     />
-    <meta name="author" content="Rirtak Manna" />
-
-    <!-- social media tag -->
-    <link rel="canonical" href="http://rirtakmanna.com" />
-    <meta property="og:site_name" content="Rirtak Manna" />
-    <meta property="og:title" content="Rirtak Manna | Front End Developer" />
-    <meta property="og:url" content="http://rirtakmanna.com" />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:description"
-      content="Hey!! I'm Rirtak manna. I help those who need a new website or redesign the existing one. I love creating websites that resonate and connect with their target audience."
-    />
-    <meta property="og:image" content="./assets/Social/socialImage.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-169193070-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-169193070-1");
-    </script>
-
-    <!-- favricon -->
+    <meta content="Rirtak Manna" name="author" />
     <link
+      href="./assets/favicon/apple-touch-icon.png"
       rel="apple-touch-icon"
       sizes="180x180"
-      href="./assets/favicon/apple-touch-icon.png"
     />
     <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
       href="./assets/favicon/favicon-32x32.png"
-    />
-    <link
       rel="icon"
+      sizes="32x32"
       type="image/png"
-      sizes="16x16"
-      href="./assets/favicon/favicon-16x16.png"
     />
-    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
     <link
-      rel="mask-icon"
+      href="./assets/favicon/favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link href="./assets/favicon/site.webmanifest" rel="manifest" />
+    <link
       href="./assets/favicon/safari-pinned-tab.svg"
+      rel="mask-icon"
       color="#61961f"
     />
-    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#f9f9f9" />
+    <link href="./assets/favicon/favicon.ico" rel="shortcut icon" />
+    <meta content="#f9f9f9" name="msapplication-TileColor" />
     <meta
-      name="msapplication-config"
       content="./assets/favicon/browserconfig.xml"
+      name="msapplication-config"
     />
-    <meta name="theme-color" content="#ffffff" />
-
-    <!-- link css file -->
-
-    <link rel="stylesheet" href="./sass/main.scss" />
-
-    <!-- link js file -->
-    <script src="./js/app.js" defer></script>
-
-    <title>Contact Form | Rirtak Manna</title>
+    <meta content="#ffffff" name="theme-color" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400;1,700&family=Muli:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/style.min.css" rel="stylesheet" />
+    <script defer src="./js/app.min.js"></script>
+    <title>Failed | Rirtak Manna</title>
   </head>
   <body>
-    <div class="rapper">
+  <div class="rapper">
       <div class="preloder">
         <div class="preloder__anim">
           <div class="load_anim" data-file="preLoad"></div>
@@ -132,107 +122,18 @@
           </ul>
         </nav>
         <main>
-          <header class="header-svg">
-            <div
-              class="header-svg__tittle"
-              data-aos="fade-up-right"
-              data-aos-mirror="true"
-            >
-              <h1 class="heading-1">
-                Contact <span class="u-text-green">Me</span>
-              </h1>
-            </div>
-            <div data-aos="fade-down-left" data-aos-mirror="true">
-              <img
-                src="./assets/contract.svg"
-                alt="Header Picture"
-                class="card__img--large"
-              />
-            </div>
-          </header>
-          <section
-            class="working u-margin-top-large"
-            data-aos="zoom-in-right"
-            data-aos-delay="400"
-          >
-            <h2 class="heading-2 u-margin-bottom-mid">
-              Have any <span class="u-text-green">Idea</span> in your mind? I
-              can craft your ideas into a
-              <span class="u-text-green">great website.</span>
-            </h2>
-            <div>
-              <a href="./work.html" class="btn__working expand"
-                >Let's Work Together</a
-              >
-            </div>
-          </section>
-          <section
-            class="doubt u-margin-bottom-mid u-margin-top-large"
-            data-aos="flip-right"
-            data-aos-delay="150"
-          >
-            <h2 class="heading-1 u-margin-top-micro">
-              Still have <span class="u-text-green">doubts</span>?
-            </h2>
-            <p class="doubt__para">
-              Let's <span class="u-text-green">Talk </span>about your project
-            </p>
-            <form
-              action="doubt-form-handler.php"
-              method="post"
-              id="doubt__form"
-              class="doubt__form"
-            >
-              <div class="form__control">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  class="form__input"
-                  placeholder="Full Name"
-                  required
-                />
-                <label for="name" class="form__label">Full Name</label>
-              </div>
-              <div class="form__control">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="form__input"
-                  placeholder="Email Address (example@example.com)"
-                  required
-                />
-                <label for="name" class="form__label"
-                  >Email Address (example@example.com)</label
-                >
-              </div>
-              <div class="form__control">
-                <textarea
-                  name="message"
-                  id="message"
-                  class="form__text"
-                  placeholder="Tell me about your project"
-                  required
-                ></textarea>
-                <label for="message" class="form__label"
-                  >Tell me about your project</label
-                >
-              </div>
-              <div class="form__btn">
-                <button
-                  type="submit"
-                  class="btn__form btn__form--submit expand"
-                >
-                  Submit
-                </button>
-                <button type="reset" class="btn__form btn__form--clear expand">
-                  Clear
-                </button>
-              </div>
-            </form>
-          </section>
-        </main>
+          <div class="header-afterForm" data-aos="zoom-in-down">
+            <img
+              alt="Error Mgs"
+              src="/assets/error.svg"
+              class="header-afterForm--img"
+            />
+            <h1 class="header-afterForm__tittle heading-1">
+              Sorry Something is not right
+            </h1>
+            <p class="header-afterForm__para">Please Try Again.</p>
+          </div>
+          </main>
       </div>
       <footer class="footer u-text-white cursor__dark u-margin-top-large">
         <div class="footer__contact">
@@ -392,6 +293,5 @@
           </ul>
         </div>
       </footer>
-    </div>
   </body>
 </html>
